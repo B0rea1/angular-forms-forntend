@@ -1,0 +1,27 @@
+<div class="container-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <!-- Login -->
+        <mat-form-field appearance="fill">
+            <mat-label>login/e-mail</mat-label>
+            <input matInput formControlName="login">
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="fill">
+            <mat-label>hasło</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-hint align="end"><a routerLink="/reset-password" routerLinkActive="active">zresetuj hasło</a>
+            </mat-hint>
+        </mat-form-field>
+
+        <!-- Submit -->
+        <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Zaloguj się</button>
+
+        <!-- Error -->
+        <div class="error">
+            <mat-error *ngIf="loginErrorMsg">{{loginErrorMsg}}</mat-error>
+        </div>
+
+    </form>
+</div>

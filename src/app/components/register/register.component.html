@@ -1,0 +1,55 @@
+<div class="container-form">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <!-- Login -->
+        <div class="input">
+            <mat-form-field appearance="fill">
+                <mat-label>e-mail</mat-label>
+                <input matInput formControlName="login" appShowInfo [show]="!registerForm.controls['login'].valid" [infoElement]="loginInfo">
+                <mat-icon *ngIf="registerForm.controls['login'].valid" matSuffix>done</mat-icon>
+            </mat-form-field>
+            <app-info #loginInfo>To musi być adres e-mail.</app-info>
+        </div>
+        
+        <!-- Password -->
+        <div class="input password">
+            <mat-form-field appearance="fill">
+                <mat-label>hasło</mat-label>
+                <input matInput type="password" formControlName="password" appShowInfo [show]="!registerForm.controls['password'].valid" [infoElement]="passwordInfo">
+                <mat-icon matSuffix *ngIf="registerForm.controls['password'].valid">done</mat-icon>
+            </mat-form-field>
+            <app-info #passwordInfo>
+                Hasło musi składać się z:
+                <ul>
+                    <li>co najmniej jednej cyfry,</li>
+                    <li>co najmniej jednej małej litery,</li>
+                    <li>co najmniej jednej dużej litery,</li>
+                    <li>co najmniej 8 znaków</li>
+                </ul>
+            </app-info>
+        </div>
+        <password-strength-meter [password]="registerForm.controls['password'].value"></password-strength-meter>
+        
+        <!-- Confirm password -->
+        <div class="input">
+            <mat-form-field appearance="fill">
+                <mat-label>powtórz hasło</mat-label>
+                <input matInput type="password" formControlName="confirmPassword" appShowInfo [show]="!registerForm.controls['confirmPassword'].valid || registerForm.get('password')?.value!==registerForm.get('confirmPassword')?.value" [infoElement]="confirmPasswordInfo">
+                <mat-icon matSuffix *ngIf="registerForm.controls['confirmPassword'].valid && registerForm.get('password')?.value===registerForm.get('confirmPassword')?.value">done</mat-icon>
+            </mat-form-field>
+            <app-info #confirmPasswordInfo>Hasła muszą być identyczne.</app-info>
+        </div>
+        
+        <!-- Submit -->
+        <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Zarejestruj się</button>
+
+        <!-- Error -->
+        <div class="error">
+            <mat-error *ngIf="registerErrorMsg">{{registerErrorMsg}}</mat-error> 
+        </div>
+        
+    </form>
+</div>
+
+
+

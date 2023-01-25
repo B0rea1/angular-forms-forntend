@@ -1,0 +1,23 @@
+.wrapper {
+    position: absolute;
+    display: flex;
+    color: #F44336;
+}
+
+.mat-icon {
+    margin: 0 15px;
+}
+
+.content {
+    padding: 5px 10px;
+    width: 145px;
+    border: 1px solid #F44336;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        position: relative;
+        margin-top: 15px;
+    }
+}

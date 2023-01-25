@@ -1,0 +1,13 @@
+app-info ul{
+    margin: 0;
+    padding-left: 20px;
+}
+
+.password ::ng-deep .mat-form-field-wrapper{
+    margin-bottom: -1.25em;
+ }
+
+password-strength-meter{
+    width: 100%;
+}
+
